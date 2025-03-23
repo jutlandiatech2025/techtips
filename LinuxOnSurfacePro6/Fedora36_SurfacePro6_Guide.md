@@ -68,19 +68,7 @@ This guide was tested out on Surface Pro 6 but would likely also work with other
 
 ---
 
-## ⏳ Step 4: Update the System
-
-Once booted into your new Fedora 36 system, run:
-
-```bash
-sudo dnf update --refresh -y
-sudo dnf upgrade --refresh -y
-sudo reboot
-```
-
----
-
-## 🧩 Step 5: Install Tools and Surface Kernel (Optional but Recommended)
+## 🧩 Step 4: Install Tools and Surface Kernel (Optional but Recommended)
 
 ### 🔓 Enable RPM Fusion:
 
@@ -109,7 +97,7 @@ sudo reboot
 
 ---
 
-## 💡 Step 6: (Optional) Switch to X11 (for multitouch/rotation fixes)
+## 💡 Step 5: (Optional) Switch to X11 (for multitouch/rotation fixes)
 
 1. Edit GDM config:
 

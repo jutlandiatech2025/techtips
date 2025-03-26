@@ -140,19 +140,9 @@ Follow the rest of the install prompts.
 
 ## 🧰 Step 4: Install Surface Kernel, Touch Support, and Drivers
 
-Open a Terminal after install and run:
-
-```bash
-sudo apt update
-sudo apt install curl gnupg
-curl -s https://packagecloud.io/install/repositories/linux-surface/linux-surface/script.deb.sh | sudo bash
-sudo apt install linux-image-surface linux-headers-surface iptsd
-sudo systemctl enable iptsd
-sudo systemctl start iptsd
-```
-
-More details:  
-📘 **https://github.com/linux-surface/linux-surface**
+Follow the instructions here:
+📘 Landing page: **https://github.com/linux-surface/linux-surface**
+📘 Debian/Ubuntu specific instructions: **https://github.com/linux-surface/linux-surface/wiki/Installation-and-Setup#Debian--Ubuntu**
 
 ---
 

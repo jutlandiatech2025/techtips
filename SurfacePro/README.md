@@ -10,7 +10,7 @@ Welcome to the **Surface Pro Tech Tips Collection** – a curated folder of help
   Step-by-step guide for installing Ubuntu on Surface Pro 5, 6, or 7, including SSD prep, UEFI settings, touch support, and post-install tweaks.
 
 - [`the_very_inofficial_macos_vm_ubuntu_guide.md`](./uthe_very_inofficial_macos_vm_ubuntu_guide.md)
-  A highly inofficial guide for educational purposes only with the purpose of showing what is technically possible if one has always wondered how to bring the worlds of Microsoft (in this case the excellent Surface Pro), free OS Linux (in this case the excellent Linux-distro Ubuntu) and the sleak world of Apple (in this case MacOS run on a VM)
+  A highly inofficial guide for educational purposes only with the purpose of showing what is technically possible if one has always wondered how to bring the worlds of Microsoft (in this case the excellent Surface Pro), free OS Linux (in this case the excellent Linux-distro Ubuntu) and the sleak world of Apple (in this case MacOS run on a VM) together on one hydra-system.
 ---
 
 ## ⚠️ Disclaimer

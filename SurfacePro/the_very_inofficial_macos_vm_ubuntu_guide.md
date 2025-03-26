@@ -17,14 +17,35 @@ sudo apt update
 sudo apt install qemu-kvm libvirt-clients libvirt-daemon-system virt-manager bridge-utils git python3
 ```
 
-Add your user to the required groups:
+---
+
+## Step 2: Verify or Install Python
+
+The `fetch-macOS.py` script requires **Python 3** to run.
+
+### Check if Python is already installed:
+```bash
+python3 --version
+```
+If Python is installed, you’ll see a version like `Python 3.12.2`. If not, install it:
+
+### Install Python (if needed):
+```bash
+sudo apt install python3
+```
+
+> 📝 Note: If Python 3 is already installed, you can skip this step.
+
+---
+
+## Step 3: Add User to Required Groups
 ```bash
 sudo usermod -aG kvm $USER
 sudo usermod -aG libvirt $USER
 ```
 Then log out and back in (or reboot).
 
-Check if your CPU supports virtualization:
+Check virtualization support:
 ```bash
 egrep -c '(vmx|svm)' /proc/cpuinfo
 ```
@@ -32,7 +53,7 @@ If the result is greater than 0, you're good to go.
 
 ---
 
-## Step 2: Clone the OSX-KVM Repository
+## Step 4: Clone the OSX-KVM Repository
 ```bash
 git clone https://github.com/kholia/OSX-KVM.git
 cd OSX-KVM
@@ -41,7 +62,7 @@ This repository provides the base configuration and scripts for running macOS vi
 
 ---
 
-## Step 3: Download macOS Installer
+## Step 5: Download macOS Installer
 Run the fetch script to download a version of macOS (Catalina, Big Sur, Monterey, Ventura, etc.):
 ```bash
 ./fetch-macOS.py
@@ -50,7 +71,7 @@ Choose your desired version when prompted. This uses Apple's official software c
 
 ---
 
-## Step 4: Create the Installation ISO
+## Step 6: Create the Installation ISO
 Use the provided script to convert the installer to a bootable ISO:
 ```bash
 ./make.sh --iso
@@ -59,7 +80,7 @@ This will generate something like `macOS-Catalina.iso` or similar.
 
 ---
 
-## Step 5: Configure and Launch the VM
+## Step 7: Configure and Launch the VM
 You can use the sample launch scripts, like `OpenCore-Boot.sh` or `basic.sh`. Customize CPU, RAM, and disk paths:
 
 Edit `OpenCore-Boot.sh` as needed:
@@ -78,7 +99,7 @@ You’ll boot into the OpenCore interface, then choose the macOS installer.
 
 ---
 
-## Step 6: Install macOS in the VM
+## Step 8: Install macOS in the VM
 Once in the installer:
 1. Open Disk Utility.
 2. Erase the virtual disk (e.g., `macOS.qcow2`) and format it as **APFS**.
@@ -88,7 +109,7 @@ The VM will reboot several times during install — just wait it out and keep se
 
 ---
 
-## Step 7: Post-Install Notes
+## Step 9: Post-Install Notes
 - You may need to reconfigure OpenCore to boot from your installed system.
 - Consider creating a snapshot of your VM after a successful install.
 - For better performance, consider enabling VirtIO GPU, CPU passthrough, or using SPICE.

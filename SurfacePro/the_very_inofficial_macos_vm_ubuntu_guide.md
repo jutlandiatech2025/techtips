@@ -65,7 +65,7 @@ This repository provides the base configuration and scripts for running macOS vi
 ## Step 5: Download macOS Installer
 Run the fetch script to download a version of macOS (Catalina, Big Sur, Monterey, Ventura, etc.):
 ```bash
-./fetch-macOS.py
+python3 fetch-macOS-v2.py
 ```
 Choose your desired version when prompted. This uses Apple's official software catalog.
 

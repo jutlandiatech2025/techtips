@@ -7,7 +7,7 @@
 ## Introduction
 This guide shows how to run macOS as a virtual machine on Ubuntu using QEMU and KVM. It avoids the need for dual booting or installing macOS directly on your hardware (which is far riskier). The macOS VM will run via virtualization with OpenCore bootloader support to bypass Apple's hardware checks.
 
-Tested on: **Ubuntu 22.04+** with **Intel CPU** supporting VT-x/VT-d.
+Tested on: **Ubuntu 24.04 LTS** with **Intel CPU** supporting VT-x/VT-d.
 
 ---
 
@@ -95,37 +95,68 @@ The VM will reboot several times during install — just wait it out and keep se
 
 ---
 
-## Running the macOS VM from a USB 3.2 Stick
+## Running the macOS VM from External Storage
 
-Running the VM from a fast USB stick (like a Samsung USB 3.2 bar) is possible and convenient — great for portability!
+Running the VM from high-speed external storage can be a great performance and portability boost.
 
-### **Preparation:**
+### Option A: Use a USB 3.2 Stick
+
+Using a fast USB stick (like a Samsung USB 3.2 bar) is convenient — plug and play across systems.
+
+#### **Preparation:**
 1. Format the USB stick as **ext4** using GParted or `mkfs.ext4`.
-2. Mount it somewhere persistent, e.g.:
+2. Mount it:
 ```bash
 sudo mkdir /mnt/macusb
 sudo mount /dev/sdX1 /mnt/macusb
 ```
 Replace `/dev/sdX1` with your actual device.
 
-### **Move the VM Directory:**
+#### **Move the VM Directory:**
 ```bash
 mv ~/OSX-KVM /mnt/macusb/OSX-KVM
 cd /mnt/macusb/OSX-KVM
 ```
 
-### **Update Scripts:**
-Edit the `OpenCore-Boot.sh` (and similar launchers) to point to the new paths:
+#### **Update Scripts:**
+Edit launchers like `OpenCore-Boot.sh`:
 ```bash
 -drive file=/mnt/macusb/OSX-KVM/macOS.qcow2,format=qcow2
 ```
 
-### **Make It Portable:**
-- Add a `.desktop` launcher or shell script to quickly mount and launch.
-- Consider setting the USB mount as permanent by editing `/etc/fstab`.
+#### **Make It Portable:**
+- Use a `.desktop` launcher or mount script.
+- Optionally configure `/etc/fstab` for auto-mounting.
 
-### **Performance Tip:**
-Make sure the stick is connected to a **USB 3.0/3.2 port**, not USB 2.0. Also, avoid NTFS or FAT32 — use native Linux file systems like `ext4` or `btrfs` for full performance.
+#### **Performance Tip:**
+Use only **USB 3.0/3.2 ports** and native Linux filesystems like `ext4` or `btrfs`. Avoid NTFS or FAT32.
+
+### Option B: Use the Built-In MicroSD Card Slot
+
+If your Surface Pro 6 has a **high-speed UHS-I or UHS-II 1TB MicroSD card**, you can store and run your VM from it just like the USB option.
+
+#### **Preparation:**
+1. Format the MicroSD card as **ext4**.
+2. Mount it:
+```bash
+sudo mkdir /mnt/macsd
+sudo mount /dev/mmcblk0p1 /mnt/macsd
+```
+Check `lsblk` to verify the exact device path (commonly `/dev/mmcblk0p1`).
+
+#### **Move the VM Directory:**
+```bash
+mv ~/OSX-KVM /mnt/macsd/OSX-KVM
+cd /mnt/macsd/OSX-KVM
+```
+
+#### **Update Scripts:**
+```bash
+-drive file=/mnt/macsd/OSX-KVM/macOS.qcow2,format=qcow2
+```
+
+#### **Performance Tip:**
+The internal MicroSD interface is often faster and more stable than external USB if using a high-quality UHS card.
 
 ---
 

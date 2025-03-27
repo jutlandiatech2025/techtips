@@ -9,7 +9,7 @@ Welcome to the **Surface Pro Tech Tips Collection** – a curated folder of help
 - [`ubuntu_surface_install_guide.md`](./ubuntu_surface_install_guide_md)  
   Step-by-step guide for installing Ubuntu on Surface Pro 5, 6, or 7, including SSD prep, UEFI settings, touch support, and post-install tweaks.
 
-- [`SurfacePro/Android_VM_Guide.md`](./SurfacePro/Android_VM_Guide.md)  
+- [`Android_VM_Guide.md`](./Android_VM_Guide.md)  
   Step-by-step guide for setting up an Android VM on an Surface Pro 5, 6 or 7 running Ubuntu
 
 - [`the_very_inofficial_macos_vm_ubuntu_guide.md`](./the_very_inofficial_macos_vm_ubuntu_guide.md)
